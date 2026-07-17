@@ -413,60 +413,6 @@ h1 {
   font-size: 7.7pt;
 }
 
-@media screen and (max-width: 900px) {
-  html,
-  body {
-    min-width: 0;
-  }
-
-  .resume {
-    width: 100%;
-    margin: 0;
-  }
-
-  .page {
-    width: 100%;
-    min-height: auto;
-    padding: 28px 24px 52px 30px;
-    box-shadow: none;
-  }
-
-  .page + .page {
-    margin-top: 18px;
-  }
-
-  .masthead,
-  .continuation-header {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .masthead__meta {
-    min-width: 0;
-    text-align: left;
-  }
-
-  .layout,
-  .layout--second {
-    grid-template-columns: 1fr;
-  }
-
-  .sidebar {
-    padding-right: 0;
-    padding-bottom: 8mm;
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .role__header {
-    flex-direction: column;
-    gap: 1.5mm;
-  }
-
-  .role__meta {
-    text-align: left;
-  }
-}
 
 @media print {
   html,
