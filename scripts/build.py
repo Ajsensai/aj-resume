@@ -10,7 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "templates" / "index.html"
-OUTPUT = ROOT / "index.html"
+OUTPUT = ROOT / "resume" / "index.html"
 INCLUDE_RE = re.compile(r"{{>\s*([^}]+?)\s*}}")
 
 
@@ -35,11 +35,11 @@ def render_file(path: Path, stack: tuple[Path, ...] = ()) -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Render index.html from résumé partials.")
+    parser = argparse.ArgumentParser(description="Render resume/index.html from résumé partials.")
     parser.add_argument(
         "--check",
         action="store_true",
-        help="Fail if index.html does not match the rendered template.",
+        help="Fail if resume/index.html does not match the rendered template.",
     )
     args = parser.parse_args()
 
@@ -47,11 +47,12 @@ def main() -> int:
 
     if args.check:
         if not OUTPUT.exists() or OUTPUT.read_text(encoding="utf-8") != rendered:
-            print("index.html is out of date. Run: python3 scripts/build.py", file=sys.stderr)
+            print("resume/index.html is out of date. Run: python3 scripts/build.py", file=sys.stderr)
             return 1
-        print("index.html is up to date.")
+        print("resume/index.html is up to date.")
         return 0
 
+    OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(rendered, encoding="utf-8")
     print(f"Rendered {OUTPUT.relative_to(ROOT)}")
     return 0

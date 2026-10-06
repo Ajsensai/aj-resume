@@ -11,7 +11,7 @@ The project deliberately avoids a JavaScript framework or build system. Prefer s
 - `templates/index.html` — the page shell and ordered component composition.
 - `components/` — résumé content partials injected into the page shell.
 - `scripts/build.py` — zero-dependency renderer for `{{> ... }}` includes.
-- `index.html` — generated output used by GitHub Pages; do not edit it directly.
+- `resume/index.html` — generated output served at `/resume`; do not edit it directly.
 - `style.css` — all layout, typography, screen and print styling.
 - `.github/workflows/static.yml` — deploys the repository as static content to GitHub Pages when `main` changes.
 - `dep/` — vendored third-party assets retained from the original template. Treat this directory as external/vendor code and do not modify it unless a task specifically requires it.
@@ -19,17 +19,17 @@ The project deliberately avoids a JavaScript framework or build system. Prefer s
 
 ## How the site works
 
-`index.html` is generated from `templates/index.html` and the partials in `components/` by running `python3 scripts/build.py`. The renderer uses only the Python standard library.
+`resume/index.html` is generated from `templates/index.html` and the partials in `components/` by running `python3 scripts/build.py`. The renderer uses only the Python standard library.
 
 The résumé is intentionally split into two A4-style sections using `.page` elements. CSS in `style.css` controls both the browser preview and print-to-PDF output.
 
-GitHub Pages runs the renderer before uploading the repository, so the deployed `index.html` is always rebuilt from the current template and components.
+GitHub Pages runs the renderer before uploading the repository, so the deployed `resume/index.html` is always rebuilt from the current template and components. Keep the repository root free for future site content.
 
 ## Editing guidance
 
 When changing résumé content:
 
-- Edit the relevant file under `components/`; do not edit generated `index.html` directly.
+- Edit the relevant file under `components/`; do not edit generated `resume/index.html` directly.
 - Preserve the existing HTML hierarchy and class names unless a layout change is explicitly requested.
 - Keep wording concise enough to preserve the current two-page A4 layout.
 - Prefer Australian/British English where applicable (for example, `containerised`).
@@ -50,7 +50,7 @@ For content-only changes:
 1. Run `python3 scripts/build.py` after changing a template or component.
 2. Run `python3 scripts/build.py --check` and confirm the generated file is current.
 3. Review the relevant component for spelling, grammar, consistent capitalisation and valid HTML structure.
-4. Open `index.html` in a browser and confirm the content still renders correctly.
+4. Open `resume/index.html` in a browser and confirm the content still renders correctly.
 5. Use print preview with A4 portrait sizing and confirm the résumé remains two pages without clipped content.
 
 For CSS changes, perform the same checks and pay particular attention to page breaks, footer placement and overflow.

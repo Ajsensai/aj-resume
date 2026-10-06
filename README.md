@@ -11,7 +11,7 @@ The project is based on the HTML résumé template by [mnjul](https://github.com
 - `templates/index.html` — page shell and component composition
 - `components/` — résumé content partials
 - `scripts/build.py` — zero-dependency renderer for `{{> ... }}` partials
-- `index.html` — generated static résumé; do not edit directly
+- `resume/index.html` — generated static résumé served at `/resume`; do not edit directly
 - `style.css` — screen and print styling
 - `CLAUDE.md` — guidance for AI coding agents working in this repository
 - `.github/workflows/static.yml` — GitHub Pages deployment
@@ -24,10 +24,10 @@ Edit the template or a component, then regenerate the static page:
 python3 scripts/build.py
 ```
 
-To verify that the committed `index.html` matches the template without changing files:
+To verify that the committed `resume/index.html` matches the template without changing files:
 
 ```bash
 python3 scripts/build.py --check
 ```
 
-There are no third-party runtime or build dependencies. GitHub Pages regenerates `index.html` during deployment before publishing the repository.
+There are no third-party runtime or build dependencies. GitHub Pages regenerates `resume/index.html` during deployment before publishing the repository. The site root is intentionally left free for future use.
